@@ -1,16 +1,9 @@
 const config = {
-  SENTRY_DSN: Sentry.init({
-    dsn: "https://10bb5057d1264ec89982336f0e7f2a60@o1381384.ingest.sentry.io/6695032",
-    // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-    // We recommend adjusting this value in production.
-    tracesSampleRate: 1.0,
-  }),
-
+  SENTRY_DSN:
+    "https://10bb5057d1264ec89982336f0e7f2a60@o1381384.ingest.sentry.io/6695032",
   STRIPE_KEY:
     "pk_test_51LbLsREkN6tZ7bV4ICLA52URixMrbroYUSRiHxO3GzFj0XAH4cf66ZuaG5bVuCMKvSib8gcO6GYtmWNDcgiDR7Hl00g42hBG7k",
-
   MAX_ATTACHMENT_SIZE: 5000000,
-
   // Backend config
   s3: {
     REGION: process.env.REACT_APP_REGION,
@@ -27,5 +20,4 @@ const config = {
     IDENTITY_POOL_ID: process.env.REACT_APP_IDENTITY_POOL_ID,
   },
 };
-
 export default config;
