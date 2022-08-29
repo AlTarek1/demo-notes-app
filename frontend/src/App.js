@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import "./App.css";
-import Routes from "./Routes";
-import Nav from "react-bootstrap/Nav";
-import { LinkContainer } from "react-router-bootstrap";
-import { AppContext } from "./lib/contextLib";
 import { Auth } from "aws-amplify";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
-import { onError } from "./lib/errorLib";
+import { LinkContainer } from "react-router-bootstrap";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { AppContext } from "./lib/contextLib";
+import { onError } from "./lib/errorLib";
+import Routes from "./Routes";
+import "./App.css";
 
 function App() {
   const nav = useNavigate();
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+
   useEffect(() => {
     onLoad();
   }, []);
@@ -30,12 +31,15 @@ function App() {
 
     setIsAuthenticating(false);
   }
+
   async function handleLogout() {
     await Auth.signOut();
 
     userHasAuthenticated(false);
+
     nav("/login");
   }
+
   return (
     !isAuthenticating && (
       <div className="App container py-3">

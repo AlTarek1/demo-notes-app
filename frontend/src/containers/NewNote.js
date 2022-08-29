@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
+import { API } from "aws-amplify";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import LoaderButton from "../components/LoaderButton";
 import { onError } from "../lib/errorLib";
+import { s3Upload } from "../lib/awsLib";
 import config from "../config";
 import "./NewNote.css";
-import { API } from "aws-amplify";
-import { s3Upload } from "../lib/awsLib";
 
 export default function NewNote() {
   const file = useRef(null);
@@ -68,7 +68,7 @@ export default function NewNote() {
           <Form.Control onChange={handleFileChange} type="file" />
         </Form.Group>
         <LoaderButton
-          block
+          block="true"
           type="submit"
           size="lg"
           variant="primary"

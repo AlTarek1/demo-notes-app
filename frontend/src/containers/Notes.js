@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { API, Storage } from "aws-amplify";
-import { onError } from "../lib/errorLib";
 import Form from "react-bootstrap/Form";
+import { API, Storage } from "aws-amplify";
+import { useParams, useNavigate } from "react-router-dom";
 import LoaderButton from "../components/LoaderButton";
+import { onError } from "../lib/errorLib";
+import { s3Upload } from "../lib/awsLib";
 import config from "../config";
 import "./Notes.css";
-import { s3Upload } from "../lib/awsLib";
 
 export default function Notes() {
   const file = useRef(null);
@@ -16,6 +16,7 @@ export default function Notes() {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     function loadNote() {
       return API.get("notes", `/notes/${id}`);
