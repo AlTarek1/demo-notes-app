@@ -15,7 +15,5 @@ export const main = handler(async (event) => {
   if (!result.Item) {
     throw new Error("Item not found.");
   }
-
-  // Return the retrieved item
   return result.Item;
 });
